@@ -4,10 +4,7 @@ import com.BehnamV.cruddemo.dao.EmployeeDAO;
 import com.BehnamV.cruddemo.entity.Employee;
 import com.BehnamV.cruddemo.service.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -25,6 +22,7 @@ public class EmployeeRestController {
     public List<Employee> findAll(){
         return employeeService.findAll();
     }
+    //find employee by id get expose "employees/{employeeId}"
     @GetMapping("/employees/{employeeId}")
     public Employee getEmployee(@PathVariable int employeeId){
         Employee theEmployee = employeeService.findById(employeeId);
@@ -33,4 +31,12 @@ public class EmployeeRestController {
         }
         return theEmployee;
     }
+    @PostMapping("/employees")
+    public Employee addEmployee(@RequestBody Employee theEmployee){
+        theEmployee.setId(0);
+        Employee dbEmployee =employeeService.save(theEmployee);
+        return dbEmployee;
+    }
+
+
 }
