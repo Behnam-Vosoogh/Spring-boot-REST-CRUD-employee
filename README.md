@@ -17,7 +17,7 @@ A simple Java Spring Boot REST API that performs full CRUD operations on an empl
 
 ## ⚙️ Tech Stack
 
-- Java 17+
+- Java 24+
 - Spring Boot
 - Spring Data JPA
 - MySQL
